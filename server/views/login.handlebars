@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Login</title>
+  <link rel="stylesheet" href="/assets/style.css"/>
+</head>
+<header>
+  <h1>NotTwitter</h1>
+</header>
+<body>
+
+    <section id="content">
+
+        <form id="loginForm" name="loginForm" action="/login" method="POST">
+            <h2>Login</h2>
+
+            <label for="user">Username</label>
+            <input id="user" type="text" name="username" placeholder="Enter username"/>
+
+            <label for="pass">Password</label>
+            <input id="pass" type="password" name="pass" placeholder="Enter password"/>
+
+            <input type="submit" value="Login"/>
+        </form>
+
+        <form id="signupForm" name="signupForm" action="/signup" method="POST">
+            <h2>Sign Up</h2>
+
+            <label for="signupUser">Username</label>
+            <input id="signupUser" type="text" name="username" placeholder="Choose username"/>
+
+            <label for="signupPass">Password</label>
+            <input id="signupPass" type="password" name="pass" placeholder="Create password"/>
+
+            <label for="signupPass2">Confirm Password</label>
+            <input id="signupPass2" type="password" name="pass2" placeholder="Confirm password"/>
+
+            <input type="submit" value="Sign Up"/>
+        </form>
+
+    </section>
+  <div id="appMessage" class="hidden">
+    <span id="errorMessage"></span>
+  </div>
+
+  <script src="/assets/loginBundle.js"></script>
+</body>
+</html>

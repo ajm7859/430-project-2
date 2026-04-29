@@ -1,0 +1,52 @@
+body {
+    margin: 0;
+    background-color: white;
+    text-align: center;
+}
+
+#content,
+#app {
+    margin-top: 80px;
+}
+
+form {
+    margin: 20px auto;
+}
+
+input, textarea {
+    padding: 8px;
+    margin: 5px;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+}
+
+input[type="submit"], button {
+    background-color: blue;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 8px 12px;
+}
+
+input[type="submit"]:hover,
+button:hover {
+    background-color: blue;
+}
+
+textarea {
+    width: 300px;
+    height: 60px;
+}
+
+#appMessage {
+    margin: 10px auto;
+    width: 300px;
+    padding: 10px;
+    background-color: beige;
+    border: 1px solid red;
+    border-radius: 5px;
+}
+
+.hidden {
+    display: none;
+}
