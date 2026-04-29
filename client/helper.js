@@ -31,9 +31,23 @@ const sendPost = async (url, data, handler) => {
     handler(result);
   }
 };
+
+const handleEditPost = (e, id, text, onReload) => {
+  e.preventDefault();
+  helper.hideError();
+
+  if (!text) {
+    helper.handleError('Post cannot be empty!');
+    return false;
+  }
+
+  helper.sendPost('/editPost', { id, text }, onReload);
+  return false;
+};
   
 module.exports = {
   handleError,
   hideError,
   sendPost,
+  handleEditPost
 };

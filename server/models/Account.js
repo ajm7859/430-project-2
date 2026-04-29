@@ -17,6 +17,14 @@ const AccountSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  premium: {
+    type: Boolean,
+    default: false,
+  },
+  displayName: {
+    type: String,
+    trim: true,
+  },
   createdDate: {
     type: Date,
     default: Date.now,
@@ -26,6 +34,8 @@ const AccountSchema = new mongoose.Schema({
 AccountSchema.statics.toAPI = (doc) => ({
   username: doc.username,
   _id: doc._id,
+  premium: doc.premium,
+  displayName: doc.displayName,
 });
 
 AccountSchema.statics.generateHash = (password) => bcrypt.hash(password, saltRounds);

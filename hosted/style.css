@@ -1,52 +1,135 @@
 body {
-    margin: 0;
-    background-color: white;
-    text-align: center;
+  margin: 0;
+  background: #e6ecf0;
+  font-family: Arial, sans-serif;
+  color: #14171a;
+  text-align: center;
+}
+
+header {
+  background: #ffffff;
+  border-bottom: 1px solid #ccd6dd;
+  padding: 15px 25px;
+  text-align: left;
+}
+
+header h1 {
+  margin: 0;
+  color: #1da1f2;
+  font-size: 26px;
+}
+
+nav {
+  background: #ffffff;
+  border-bottom: 1px solid #ccd6dd;
+  padding: 12px 25px;
+  text-align: left;
+}
+
+nav a {
+  color: #1da1f2;
+  text-decoration: none;
+  margin-right: 15px;
+  font-weight: bold;
 }
 
 #content,
-#app {
-    margin-top: 80px;
+.feed-app {
+  max-width: 520px;
+  margin: 40px auto;
 }
 
-form {
-    margin: 20px auto;
+form,
+.account-panel,
+.post-card {
+  background: #ffffff;
+  border: 1px solid #ccd6dd;
+  border-radius: 6px;
+  padding: 20px;
+  margin-bottom: 18px;
 }
 
-input, textarea {
-    padding: 8px;
-    margin: 5px;
-    border: 1px solid lightgray;
-    border-radius: 4px;
+label {
+  display: block;
+  text-align: left;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 
-input[type="submit"], button {
-    background-color: blue;
-    color: white;
-    border: none;
-    cursor: pointer;
-    padding: 8px 12px;
+input,
+textarea {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccd6dd;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  font-family: Arial, sans-serif;
+}
+
+textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+input[type="submit"],
+button {
+  width: auto;
+  background: #1da1f2;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 18px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 5px;
 }
 
 input[type="submit"]:hover,
 button:hover {
-    background-color: blue;
+  background: #0d8ddb;
 }
 
-textarea {
-    width: 300px;
-    height: 60px;
+.post-card {
+  text-align: left;
+}
+
+.post-card h3 {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  color: #14171a;
+}
+
+.post-card p {
+  margin: 8px 0 12px 0;
+  line-height: 1.4;
+}
+
+.post-actions {
+  border-top: 1px solid #e6ecf0;
+  padding-top: 10px;
+  margin-top: 10px;
+}
+
+.empty-feed {
+  color: #657786;
+  background: #ffffff;
+  border: 1px solid #ccd6dd;
+  border-radius: 6px;
+  padding: 20px;
 }
 
 #appMessage {
-    margin: 10px auto;
-    width: 300px;
-    padding: 10px;
-    background-color: beige;
-    border: 1px solid red;
-    border-radius: 5px;
+  max-width: 520px;
+  margin: 10px auto;
+  padding: 12px;
+  background: #ffd6d6;
+  border: 1px solid #ff6b6b;
+  border-radius: 6px;
+  color: #8a0000;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }

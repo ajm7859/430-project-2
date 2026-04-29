@@ -61,6 +61,87 @@ const signup = async (req, res) => {
   }
 };
 
+const getAccount = (req, res) => res.json({ account: req.session.account });
+
+const togglePremium = async (req, res) => {
+  try {
+    const account = await Account.findById(req.session.account._id).exec();
+
+    if (!account) {
+      return res.status(404).json({ error: 'Account not found!' });
+    }
+
+    account.premium = !account.premium;
+    await account.save();
+
+    req.session.account = Account.toAPI(account);
+
+    return res.json({ premium: account.premium });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({ error: 'Error updating premium status!' });
+  }
+};
+
+const customizeAccount = async (req, res) => {
+  try {
+    const account = await Account.findById(req.session.account._id).exec();
+
+    if (!account) {
+      return res.status(404).json({ error: 'Account not found!' });
+    }
+    
+    account.displayName = req.body.displayName || account.displayName;
+
+    await account.save();
+
+    req.session.account = Account.toAPI(account);
+
+    return res.json({ account: req.session.account });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({ error: 'Error customizing account!' });
+  }
+};
+
+const changePassword = async (req, res) => {
+  const oldPass = `${req.body.oldPass}`;
+  const newPass = `${req.body.newPass}`;
+  const newPass2 = `${req.body.newPass2}`;
+
+  if (!oldPass || !newPass || !newPass2) {
+    return res.status(400).json({ error: 'All fields are required!' });
+  }
+
+  if (newPass !== newPass2) {
+    return res.status(400).json({ error: 'New passwords do not match!' });
+  }
+
+  try {
+    const account = await Account.findById(req.session.account._id).exec();
+
+    if (!account) {
+      return res.status(404).json({ error: 'Account not found!' });
+    }
+
+    return Account.authenticate(account.username, oldPass, async (err, doc) => {
+      if (err || !doc) {
+        return res.status(401).json({ error: 'Current password is incorrect!' });
+      }
+
+      const hash = await Account.generateHash(newPass);
+      account.password = hash;
+
+      await account.save();
+
+      return res.json({ message: 'Password changed successfully!' });
+    });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({ error: 'Error changing password!' });
+  }
+};
+
 const notFoundPage = (req, res) => {
   res.status(404).render('404');
 };
@@ -71,4 +152,8 @@ module.exports = {
   logout,
   signup,
   notFoundPage,
+  togglePremium,
+  customizeAccount,
+  getAccount,
+  changePassword,
 };
